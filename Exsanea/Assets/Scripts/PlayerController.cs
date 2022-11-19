@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Pause;
     public bool isPaused = false;
     public Rigidbody2D rb;
+    private bool _facingRight = true;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector2 input = moveAction.ReadValue<Vector2>();
+        Debug.Log(input.x);
         bool inputInteract = interactAction.triggered;
         bool inputPause = pauseAction.triggered;
 
@@ -63,6 +65,13 @@ public class PlayerController : MonoBehaviour
         {
             Pause.SetActive(false);
         }
+    }
+    private void Flip()
+    {
+        _facingRight = !_facingRight;
+        float localScaleX = transform.localScale.x;
+        localScaleX = localScaleX * -1f;
+        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
     }
 
 }
