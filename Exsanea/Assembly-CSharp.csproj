@@ -705,6 +705,12 @@
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
