@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public bool isPaused = false;
     public Rigidbody2D rb;
     private bool _facingRight = true;
+    public bool isInteracting = false;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector2 input = moveAction.ReadValue<Vector2>();
-        Debug.Log(input.x);
+        //Debug.Log(input.x);
         bool inputInteract = interactAction.triggered;
         bool inputPause = pauseAction.triggered;
 
@@ -48,9 +49,21 @@ public class PlayerController : MonoBehaviour
         //controller.Move(move * Time.deltaTime * playerSpeed);
         rb.velocity = (move * playerSpeed);
 
-        if (inputInteract)
+        if (input.x > 0f && _facingRight == true)
         {
-            Debug.Log("interactuando");
+            Flip();
+        }
+        else if (input.x < 0f && _facingRight == false)
+        {
+            Flip();
+        }
+
+        if (inputInteract && isInteracting == false)
+        {
+            //Debug.Log("interactuando");
+            StartCoroutine(StopInteaction());
+
+
         }
         if (inputPause)
         {
@@ -72,6 +85,12 @@ public class PlayerController : MonoBehaviour
         float localScaleX = transform.localScale.x;
         localScaleX = localScaleX * -1f;
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+    }
+    IEnumerator StopInteaction()
+    {
+        isInteracting = true;
+        yield return new WaitForSeconds(2);
+        isInteracting = false;
     }
 
 }
