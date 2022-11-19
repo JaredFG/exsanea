@@ -140,3 +140,4 @@ Received Import Request.
   path: Assets/Scripts/test.cs
   artifactKey: Guid(1744fad887db07a47b9264c0cecfeb3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/test.cs using Guid(1744fad887db07a47b9264c0cecfeb3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27a98d583c5863b62e6f04f2a0867ca4') in 0.041897 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
