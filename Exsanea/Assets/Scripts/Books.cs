@@ -11,10 +11,12 @@ public class Books : MonoBehaviour
     private bool canExplore;        // Player can look through books with the keys?
     private int xCoord;             // X coordinate of the current book selected
     private int yCoord;             // Y coordinate of the current book selected
+    private bool canMove;
     private GameObject selectedBook;
 
     void Start()
     {
+        canMove = true;
         darkPlane = false;
         canExplore = false;
         xCoord = 0;
@@ -23,17 +25,21 @@ public class Books : MonoBehaviour
 
     void Update()
     {
-        if(canExplore)
+        if(canExplore && canMove)
         {
             if(Input.GetAxis("Horizontal") != 0)
             {
                 xCoord += (Input.GetAxis("Horizontal") > 0 ? 1 : -1);
+                xCoord = Mathf.Clamp(xCoord, 0, booksPanel.transform.GetChild(0).childCount - 1);
+                StartCoroutine(ResetInput());
                 GetBook();
             }
 
             if(Input.GetAxis("Vertical") != 0)
             {
-                yCoord += (Input.GetAxis("Vertical") > 0 ? 1 : -1);
+                yCoord += (Input.GetAxis("Vertical") < 0 ? 1 : -1);
+                yCoord = Mathf.Clamp(yCoord, 0, booksPanel.transform.childCount - 1);
+                StartCoroutine(ResetInput());
                 GetBook();
             }
 
@@ -45,13 +51,19 @@ public class Books : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.CompareTag("Player"))
         {
             booksPanel.SetActive(true);
             canExplore = true;
         }
+    }
+    
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if(collider.CompareTag("Player"))
+            contentText.text = "";
     }
 
     private BookItem GetBook()
@@ -64,7 +76,7 @@ public class Books : MonoBehaviour
         
         selectedBook = book.gameObject;
         selectedBook.GetComponent<Image>().color = Color.blue;
-        selectedBook.GetComponent<Animator>().SetBool("Selected", true);
+        // selectedBook.GetComponent<Animator>().SetBool("Selected", true);
         return book;
     }
 
@@ -72,21 +84,21 @@ public class Books : MonoBehaviour
     {
         if(book.isBad)
         {
-            booksPanel.GetComponent<Animator>().SetTrigger("Jumpscare");
+            // booksPanel.GetComponent<Animator>().SetTrigger("Jumpscare");
+            print("jumpscare");
             darkPlane = true;
         }
 
+        contentText.text = book.text;
         if(!book.wasRead)
         {
             book.wasRead = true;
             if(!string.IsNullOrEmpty(book.trueText))
                 book.text = book.trueText;
-        }
-        
-        contentText.text = book.text;
+        }        
         
         if(book.isFinal)
-            ExitBookPanel();
+            StartCoroutine(Final());
     }
 
     public void ExitBookPanel()
@@ -95,10 +107,22 @@ public class Books : MonoBehaviour
         {
             // Change to dark plane
         }
-        else
-        {
-            booksPanel.SetActive(false);
-            canExplore = false;
-        }
+        booksPanel.SetActive(false);
+        canExplore = false;
+        xCoord = 0;
+        yCoord = 0;
+    }
+
+    private IEnumerator ResetInput()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(0.3f);
+        canMove = true;
+    }
+
+    private IEnumerator Final()
+    {
+        yield return new WaitForSeconds(0.6f);
+        ExitBookPanel();
     }
 }
