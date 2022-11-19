@@ -41,6 +41,7 @@
      <Compile Include="Assets\Scripts\MirrorController.cs" />
      <Compile Include="Assets\Scripts\LibraryScript\DialogueTrigger.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
+     <Compile Include="Assets\Scripts\hola.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -614,8 +615,14 @@
     <Reference Include="System.Xml.Serialization">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
