@@ -38,10 +38,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraSwitcher.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\hola.cs" />
      <Compile Include="Assets\Scripts\MirrorController.cs" />
      <Compile Include="Assets\Scripts\LibraryScript\DialogueTrigger.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
-     <Compile Include="Assets\Scripts\hola.cs" />
+     <Compile Include="Assets\Scripts\cameraRegister.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
