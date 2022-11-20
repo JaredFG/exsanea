@@ -41,8 +41,9 @@
      <Compile Include="Assets\Scripts\hola.cs" />
      <Compile Include="Assets\Scripts\MirrorController.cs" />
      <Compile Include="Assets\Scripts\LibraryScript\DialogueTrigger.cs" />
-     <Compile Include="Assets\Scripts\test.cs" />
      <Compile Include="Assets\Scripts\cameraRegister.cs" />
+     <Compile Include="Assets\Scripts\test.cs" />
+     <Compile Include="Assets\Scripts\mirror.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -654,6 +655,9 @@
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
         <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>F:\Escritorio\UnityProjects\exsanea\Exsanea\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

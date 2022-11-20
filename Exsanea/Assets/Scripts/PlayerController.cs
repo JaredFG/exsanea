@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool _facingRight = true;
     public bool isInteracting = false;
 
+    public Animator animator;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -35,6 +36,11 @@ public class PlayerController : MonoBehaviour
         moveAction = playerInput.actions["Move"];
         interactAction = playerInput.actions["Interact"];
         pauseAction = playerInput.actions["Pause"];
+        animator = GetComponent<Animator>();
+
+    }
+    private void Start()
+    {
 
     }
     private void Update()
@@ -48,6 +54,15 @@ public class PlayerController : MonoBehaviour
         Vector2 move = new Vector2(currentInputVector.x, currentInputVector.y);
         //controller.Move(move * Time.deltaTime * playerSpeed);
         rb.velocity = (move * playerSpeed);
+
+        if (input.x != 0 && input.y != 0)
+        {
+            animator.SetBool("Walk", true);
+        }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
 
         if (input.x > 0f && _facingRight == true)
         {

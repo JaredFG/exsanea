@@ -22,9 +22,11 @@ public class test : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            //here mejor
             if (other.gameObject.GetComponent<PlayerController>().isInteracting == true)
             {
                 changeView();
+
             }
         }
     }
